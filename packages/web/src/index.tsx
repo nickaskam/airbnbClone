@@ -8,11 +8,11 @@ import { Routes } from "./routes";
 import "./index.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <Routes />
-    </ApolloProvider>
-  </React.StrictMode>,
+  //<React.StrictMode>
+  <ApolloProvider client={client}>
+    <Routes />
+  </ApolloProvider>,
+  //</React.StrictMode>,
   document.getElementById("root")
 );
 

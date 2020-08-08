@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { RegisterConnector } from "../modules/RegisterConnector";
+import { RegisterConnector } from "../modules/Register/RegisterConnector";
 
 export const Routes = () => (
   <BrowserRouter>
