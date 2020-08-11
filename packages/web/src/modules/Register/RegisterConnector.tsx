@@ -1,4 +1,6 @@
 import * as React from "react";
+import { RegisterController } from "@airbnbclone/controller";
+
 import { RegisterView } from "./view/RegisterView";
 
 export class RegisterConnector extends React.PureComponent {
@@ -8,6 +10,11 @@ export class RegisterConnector extends React.PureComponent {
   };
 
   render() {
-    return <RegisterView submit={this.dummySubmit} />;
+    return (
+      <React.Fragment>
+        <RegisterController />
+        <RegisterView submit={this.dummySubmit} />
+      </React.Fragment>
+    );
   }
 }
