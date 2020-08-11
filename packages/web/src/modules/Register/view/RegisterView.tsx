@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
-import { Form, Input, Button } from "antd";
-import { withFormik, FormikErrors, FormikProps } from "formik";
+import { Form, Button } from "antd";
+import { withFormik, FormikErrors, FormikProps, Field } from "formik";
 import { validUserSchema } from "@airbnbclone/common";
+import { InputField } from "../../shared/InputField";
 
 interface FormValues {
   email: string;
@@ -14,46 +15,14 @@ interface Props {
 
 class C extends PureComponent<FormikProps<FormValues> & Props> {
   render() {
-    const {
-      values,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      touched,
-      errors,
-    } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <form style={{ display: "flex" }} onSubmit={handleSubmit}>
         <div style={{ width: 400, margin: "auto" }}>
-          <Form.Item
-            label="Username"
-            help={touched.email && errors.email ? errors.email : ""}
-            validateStatus={touched.email && errors.email ? "error" : undefined}
-          >
-            <Input
-              name="email"
-              placeholder="Email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
-          <Form.Item
-            label="Password"
-            help={touched.password && errors.password ? errors.password : ""}
-            validateStatus={
-              touched.password && errors.password ? "error" : undefined
-            }
-          >
-            <Input.Password
-              name="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </Form.Item>
+          <Field name="email" placeholder="Email" component={InputField} />
+          <Field name="password" type="password" component={InputField} />
           <Form.Item>
-            <a className="login-form-forgot" href="">
+            <a className="login-form-forgot" href="google.com">
               Forgot password
             </a>
           </Form.Item>
@@ -67,7 +36,7 @@ class C extends PureComponent<FormikProps<FormValues> & Props> {
             </Button>
           </Form.Item>
           <Form.Item>
-            Or <a href="">Login now!</a>
+            Or <a href="google.com">Login now!</a>
           </Form.Item>
         </div>
       </form>
