@@ -6,6 +6,6 @@ export const createTestConn = async (resetDB: boolean = false) => {
     ...connectionOptions,
     name: "default",
     synchronize: resetDB,
-    dropSchema: resetDB,
+    dropSchema: resetDB
   });
 };
