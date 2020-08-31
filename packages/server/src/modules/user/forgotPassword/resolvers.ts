@@ -3,15 +3,13 @@ import * as bcrypt from "bcryptjs";
 import { registerPasswordValidation } from "@airbnbclone/common";
 
 import { ResolverMap } from "../../../types/graphql-utils";
+import { GQL } from "../../../types/schema";
 import { forgotPasswordLockAccount } from "../../../utils/forgotPasswordLockAccount";
 import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLink";
 import { User } from "../../../entity/User";
 import { userNotFoundError, expiredKeyError } from "./errorMessages";
 import { forgotPasswordPrefix } from "../../../constants";
 import { formatYupError } from "../../../utils/formatYupError";
-
-// 20 minutes
-// lock account
 
 const schema = yup.object().shape({
   newPassword: registerPasswordValidation,

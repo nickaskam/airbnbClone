@@ -1,19 +1,20 @@
 import * as bcrypt from "bcryptjs";
 
 import { ResolverMap } from "../../../types/graphql-utils";
+import { GQL } from "../../../types/schema";
 import { User } from "../../../entity/User";
 import {
   invalidLogin,
   confirmEmailError,
-  forgotPasswordLockedError
+  forgotPasswordLockedError,
 } from "./errorMessages";
 import { userSessionIdPrefix } from "../../../constants";
 
 const errorResponse = [
   {
     path: "email",
-    message: invalidLogin
-  }
+    message: invalidLogin,
+  },
 ];
 
 export const resolvers: ResolverMap = {
@@ -33,8 +34,8 @@ export const resolvers: ResolverMap = {
         return [
           {
             path: "email",
-            message: confirmEmailError
-          }
+            message: confirmEmailError,
+          },
         ];
       }
 
@@ -42,8 +43,8 @@ export const resolvers: ResolverMap = {
         return [
           {
             path: "email",
-            message: forgotPasswordLockedError
-          }
+            message: forgotPasswordLockedError,
+          },
         ];
       }
 
@@ -60,6 +61,6 @@ export const resolvers: ResolverMap = {
       }
 
       return null;
-    }
-  }
+    },
+  },
 };

@@ -1,6 +1,7 @@
 import { validUserSchema } from "@airbnbclone/common";
 
 import { ResolverMap } from "../../../types/graphql-utils";
+import { GQL } from "../../../types/schema";
 import { User } from "../../../entity/User";
 import { formatYupError } from "../../../utils/formatYupError";
 import { duplicateEmail } from "./errorMessages";
