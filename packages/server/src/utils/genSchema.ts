@@ -8,14 +8,14 @@ export const genSchema = () => {
   const pathToModules = path.join(__dirname, "../modules");
   const graphqlTypes = glob
     .sync(`${pathToModules}/**/*.graphql`)
-    .map(x => fs.readFileSync(x, { encoding: "utf8" }));
+    .map((x) => fs.readFileSync(x, { encoding: "utf8" }));
 
   const resolvers = glob
     .sync(`${pathToModules}/**/resolvers.?s`)
-    .map(resolver => require(resolver).resolvers);
+    .map((resolver) => require(resolver).resolvers);
 
   return makeExecutableSchema({
     typeDefs: mergeTypes(graphqlTypes),
-    resolvers: mergeResolvers(resolvers)
+    resolvers: mergeResolvers(resolvers),
   });
 };

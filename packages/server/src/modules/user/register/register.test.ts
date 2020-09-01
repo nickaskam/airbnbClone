@@ -9,7 +9,7 @@ import {
 import { User } from "../../../entity/User";
 import { duplicateEmail } from "./errorMessages";
 import { TestClient } from "../../../utils/TestClient";
-import { createTestConn } from "../../../testUtils/createTestConn";
+import { createTypeormConn } from "../../../utils/createTypeormConn";
 
 faker.seed(Date.now() + 5);
 const email = faker.internet.email();
@@ -19,13 +19,13 @@ const client = new TestClient(process.env.TEST_HOST as string);
 
 let conn: Connection;
 beforeAll(async () => {
-  conn = await createTestConn();
+  conn = await createTypeormConn();
 });
 afterAll(async () => {
   conn.close();
 });
 
-describe("Register user", async () => {
+describe("Register user", () => {
   it("check for duplicate emails", async () => {
     // make sure we can register a user
     const response = await client.register(email, password);

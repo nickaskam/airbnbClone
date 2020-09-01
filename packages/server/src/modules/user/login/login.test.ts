@@ -4,7 +4,7 @@ import * as faker from "faker";
 import { invalidLogin, confirmEmailError } from "./errorMessages";
 import { User } from "../../../entity/User";
 import { TestClient } from "../../../utils/TestClient";
-import { createTestConn } from "../../../testUtils/createTestConn";
+import { createTypeormConn } from "../../../utils/createTypeormConn";
 
 faker.seed(Date.now() + 1);
 const email = faker.internet.email();
@@ -14,7 +14,7 @@ const client = new TestClient(process.env.TEST_HOST as string);
 
 let conn: Connection;
 beforeAll(async () => {
-  conn = await createTestConn();
+  conn = await createTypeormConn();
 });
 afterAll(async () => {
   conn.close();
@@ -27,9 +27,9 @@ const loginExpectError = async (e: string, p: string, errMsg: string) => {
     login: [
       {
         path: "email",
-        message: errMsg
-      }
-    ]
+        message: errMsg,
+      },
+    ],
   });
 };
 
