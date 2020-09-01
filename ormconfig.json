@@ -25,7 +25,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "1234",
-    "database": "airbnb-clone",
+    "database": "airbnb-clone-test",
     "synchronize": true,
     "logging": false,
     "dropSchema": true,
